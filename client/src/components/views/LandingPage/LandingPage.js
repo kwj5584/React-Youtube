@@ -1,5 +1,4 @@
 import React,{useEffect, useState} from 'react'
-import { FaCode } from "react-icons/fa";
 import {Card, Icon, Avatar, Col, Typography, Row} from 'antd';
 import axios from 'axios'
 import moment from 'moment';
@@ -24,14 +23,14 @@ function LandingPage() {
         var seconds = Math.floor((video.duration- minutes*60));
         return(
             <Col lg={6} md={8} xs={24}> {/** 가장 큰 화면일 때 6*4=24 4개의 영상을 한 행에 등록, 중간크기일 때 3개, 가장 작은 크기일 때 1개 */}
-                <a href={`/video/post/${video._id}`}> 
-                    <div style={{position:'relative'}}>
+                <div style={{position:'relative'}}>
+                    <a href={`/video/${video._id}`}> 
                         <img style={{width:'100%'}} src={`http://localhost:5000/${video.thumbnail}`} alt='thumbnail'/>
                         <div className="duration">
                             <span>{minutes} : {seconds}</span>
                         </div>
-                    </div>
                     </a>
+                </div>
                     <br/>
                     <Meta
                         avatar ={
@@ -41,7 +40,8 @@ function LandingPage() {
                         description=""
                     />
                     <span>{video.writer.name}</span><br/>
-                    <span style={{marginLeft:'3rem'}}>{video.views} views</span> - <span>{moment(video.createdAt).format('MMM Do YY')}</span> {/**업데이트 한 날짜 */}
+                    <span style={{marginLeft:'3rem'}}>{video.views} views</span>
+                     - <span>{moment(video.createdAt).format('MMM Do YY')}</span> {/**업데이트 한 날짜 */}
                 </Col>
         )
     })
