@@ -18,6 +18,7 @@ function VideoDetailPage(props) {
         .then(res=>{
             if(res.data.success){
                 setVideoDetail(res.data.videoDetail)
+                console.log('getVideoDetail:',res.data.videoDetail)
             }else{
                 alert('비디오 정보 가져오기 실패')
             }
@@ -55,7 +56,7 @@ function VideoDetailPage(props) {
                         </List.Item>
     
                         {/* Comments*/}
-                        <Comment refreshFunction={refreshFunction} commentLists={Comments} videoId={videoId}/>
+                        <Comment refreshFunction={refreshFunction} commentLists={Comments} postId={videoId}/>
                     </div>
                 </Col>
                 <Col lg={6} xs={24}>
