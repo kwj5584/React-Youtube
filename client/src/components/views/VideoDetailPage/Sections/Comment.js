@@ -5,8 +5,8 @@ import SingleComment from './SingleComment'
 import ReplyComment from './ReplyComment'
 
 function Comment(props) {
-    const refreshFunction = props.refreshFunction
-    const postId = props.videoId
+    console.log('comment:',props)
+    const videoId = props.postId
     const user = useSelector(state => state.user);
     const [commentValue, setCommentValue] = useState('')
     
@@ -19,13 +19,13 @@ function Comment(props) {
         const commentVariable = {
             content: commentValue,
             writer: user.userData._id,
-            postId: postId
+            postId: videoId
         }
         axios.post('/api/comment/saveComment', commentVariable)
         .then(res=>{
             if(res.data.success){
                 setCommentValue('')
-                refreshFunction(res.data.result)
+                props.refreshFunction(res.data.result)
             }else{
                 alert('댓글 작성 실패')
             }
@@ -37,16 +37,14 @@ function Comment(props) {
             <p>Replies</p>
             <hr/>
             {/* Comment Lists */}
-            {props.commentLists && props.commentLists.map((comment,index)=>(
-                (!comment.responseTo&&
-                <React.Fragment>
-                    <SingleComment comment={comment} postId={props.postId} refreshFunction={props.refreshFunction} />
-                    <ReplyComment refreshFunction={refreshFunction} parentCommentId={comment._id} postId={postId} commentLists={props.commentLists}/>
-                </React.Fragment>
-                
+            {props.commentLists && props.commentLists.map((comment, index) => (
+                (!comment.responseTo &&
+                    <React.Fragment key={index}>
+                        <SingleComment comment={comment} postId={videoId} refreshFunction={props.refreshFunction} />
+                        <ReplyComment commentLists={props.commentLists} postId={videoId} parentCommentId={comment._id} refreshFunction={props.refreshFunction} />
+                    </React.Fragment>
                 )
             ))}
-            
             {/* Root Comment Form*/ }
             <form style={{display:'flex'}} onSubmit={onSubmit}>
                 <textarea
