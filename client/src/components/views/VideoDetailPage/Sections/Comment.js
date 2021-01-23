@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import axios from 'axios'
 import {useSelector} from 'react-redux'
 import SingleComment from './SingleComment'
+import ReplyComment from './ReplyComment'
 
 function Comment(props) {
     const refreshFunction = props.refreshFunction
@@ -38,7 +39,11 @@ function Comment(props) {
             {/* Comment Lists */}
             {props.commentLists && props.commentLists.map((comment,index)=>(
                 (!comment.responseTo&&
-                <SingleComment refreshFunction={refreshFunction} comment={comment} postId={postId} writer={user.userData._id}/>
+                <React.Fragment>
+                    <SingleComment comment={comment} postId={props.postId} refreshFunction={props.refreshFunction} />
+                    <ReplyComment refreshFunction={refreshFunction} parentCommentId={comment._id} postId={postId} commentLists={props.commentLists}/>
+                </React.Fragment>
+                
                 )
             ))}
             
