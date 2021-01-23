@@ -48,8 +48,8 @@ function VideoDetailPage(props) {
                             actions={[subscribeButton]}
                         >
                             <List.Item.Meta
-                                avatar={<Avatar src={VideoDetail.writer.image}/>}
-                                title={VideoDetail.writer.name}
+                                avatar={<Avatar src={VideoDetail.writer && VideoDetail.writer.image}/>}
+                                title={VideoDetail.title}
                                 description={VideoDetail.description}
                                 />
                         </List.Item>
