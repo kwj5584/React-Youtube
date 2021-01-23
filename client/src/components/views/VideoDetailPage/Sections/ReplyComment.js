@@ -1,63 +1,52 @@
-import React,{useState} from 'react'
-import axios from 'axios'
-import {useSelector} from 'react-redux'
-import SingleComment from './SingleComment'
-import ReplyComment from './ReplyComment'
+import React, { useEffect, useState } from 'react'
+import SingleComment from './SingleComment';
 
-function Comment(props) {
-    console.log('comment:',props)
-    const videoId = props.postId
-    const user = useSelector(state => state.user);
-    const [commentValue, setCommentValue] = useState('')
-    
-    const handleClick = (e) =>{
-        setCommentValue(e.currentTarget.value)
-    }
-    const onSubmit = (e)=>{
-        e.preventDefault();
+function ReplyComment(props) {
+    const [ChildCommentNumber, setChildCommentNumber] = useState(0)
+    const [OpenReplyComments, setOpenReplyComments] = useState(false)
+    useEffect(() => {
+        let commentNumber = 0;
+        props.commentLists.map((comment) => {
 
-        const commentVariable = {
-            content: commentValue,
-            writer: user.userData._id,
-            postId: videoId
-        }
-        axios.post('/api/comment/saveComment', commentVariable)
-        .then(res=>{
-            if(res.data.success){
-                setCommentValue('')
-                props.refreshFunction(res.data.result)
-            }else{
-                alert('댓글 작성 실패')
+            if (comment.responseTo === props.parentCommentId) {
+                commentNumber++
             }
         })
+        setChildCommentNumber(commentNumber)
+    }, [props.commentLists])
+
+
+    let renderReplyComment = (parentCommentId) =>
+    props.commentLists.map((comment, index) => (
+        <React.Fragment key={index}>
+            {comment.responseTo === parentCommentId &&
+                <div style={{ width: '80%', marginLeft: '40px' }}>
+                    <SingleComment comment={comment} postId={props.videoId} refreshFunction={props.refreshFunction} />
+                    <ReplyComment commentLists={props.commentLists} parentCommentId={comment._id} postId={props.videoId} refreshFunction={props.refreshFunction} />
+                </div>
+            }
+        </React.Fragment>
+    ))
+    const handleChange = () => {
+        setOpenReplyComments(!OpenReplyComments)
     }
+
     return (
         <div>
-            <br/>
-            <p>Replies</p>
-            <hr/>
-            {/* Comment Lists */}
-            {props.commentLists && props.commentLists.map((comment, index) => (
-                (!comment.responseTo &&
-                    <React.Fragment key={index}>
-                        <SingleComment comment={comment} postId={videoId} refreshFunction={props.refreshFunction} />
-                        <ReplyComment commentLists={props.commentLists} postId={videoId} parentCommentId={comment._id} refreshFunction={props.refreshFunction} />
-                    </React.Fragment>
-                )
-            ))}
-            {/* Root Comment Form*/ }
-            <form style={{display:'flex'}} onSubmit={onSubmit}>
-                <textarea
-                    style={{width:'100%', borderRadius:'5px'}}
-                    onChange={handleClick}
-                    value={commentValue}
-                    placeholder='댓글 작성해주세요'
-                />
-                <br/>
-                <button style={{width:'20%', height:'52px'}} onClick={onSubmit}>Submit</button>
-            </form>
+
+            {ChildCommentNumber > 0 &&
+                <p style={{ fontSize: '14px', margin: 0, color: 'gray' }}
+                    onClick={handleChange} >
+                    View {ChildCommentNumber} more comment(s)
+            </p>
+            }
+
+            {OpenReplyComments &&
+                renderReplyComment(props.parentCommentId)
+            }
+
         </div>
     )
 }
 
-export default Comment
+export default ReplyComment
