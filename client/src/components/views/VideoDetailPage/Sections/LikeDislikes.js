@@ -50,27 +50,84 @@ function LikeDislikes(props) {
         })
         
     }, [])
+    const onLike = () =>{
+        if(LikeAction === null) {  // 좋아요버튼 클릭이 안되있을 때
+            axios.post('/api/like/upLike', variable)
+            .then(res=>{
+                if(res.data.success){
+                    setLikes(Likes+1)
+                    setLikeAction('liked')
+                    if( DislikeAction !== null){
+                        setDislikeAction(null)
+                        setDislikes(Dislikes-1)
+                    }
+                }else{
+                    alert('좋아요 버튼 오류')
+                }
+            })
+        }
+        else{
+            axios.post('/api/like/unLike', variable)
+            .then(res=>{
+                if(res.data.success){
+                    setLikes(Likes-1)
+                    setLikeAction(null)
+                }else{
+                    alert('좋아요 취소 오류')
+                }
+            })
+        }
+    }
+    const onDislike = () =>{
+        if(DislikeAction !== null) {  // 싫어요버튼 클릭이 안되있을 때
+            axios.post('/api/like/unDislike', variable)
+            .then(res=>{
+                if(res.data.success){
+                    setDislikes(Dislikes -1 )
+                    setDislikeAction(null)
+                }else{
+                    alert('싫어요 취소 오류')
+                }
+            })
+        }
+        else{
+            axios.post('/api/like/upDisLike', variable)
+            .then(res=>{
+                if(res.data.success){
+                    setDislikes(Dislikes+1)
+                    setDislikeAction('disliked')
+
+                    if(LikeAction !== null){
+                        setLikeAction(null)
+                        setLikes(Likes-1)
+                    }
+                }else{
+                    alert('싫어요 버튼 오류')
+                }
+            })
+        }
+    }
     return (
         <div>
             <span key="comment-basic-like">
                 <Tooltip title="Like">
                     <Icon type="like"
                         theme={LikeAction==='liked'? "filled" : 'outlined'}
-                        onClick
+                        onClick={onLike}
                     />
                 </Tooltip>
-            <span style={{paddingLeft:'8px', cursor:'auto'}}> {Likes} </span>
-            </span>
+            <span style={{paddingLeft:'8px', cursor:'auto'}}>{Likes} </span>
+            </span>&nbsp;&nbsp;
 
             <span key="comment-basic-dislike">
                 <Tooltip title="Dislike">
                     <Icon type="dislike"
                         theme={DislikeAction==='disliked'? "filled" : 'outlined'}
-                        onClick
+                        onClick={onDislike}
                     />
                 </Tooltip>
-            <span style={{paddingLeft:'8px', cursor:'auto'}}> {Dislikes} </span>
-            </span>
+            <span style={{paddingLeft:'8px', cursor:'auto'}}>{Dislikes} </span>
+            </span>&nbsp;&nbsp;
         </div>
     )
 }
