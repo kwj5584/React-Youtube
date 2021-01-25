@@ -124,7 +124,15 @@ router.post('/getSubscriptionVideos',(req,res)=>{
                 res.status(200).json({success:true,videos})
             })
     })
-    
+})
+
+router.post('/deleteVideo',(req,res)=>{
+    console.log('deletevideo:',req.body.videoId)
+    Video.findOneAndDelete({"_id":req.body.videoId})
+    .exec((err,doc)=>{
+        if(err) return res.status(400).json({success:false,err})
+        res.status(200).json({success:true,doc})
+    })
 })
 
 module.exports = router;
