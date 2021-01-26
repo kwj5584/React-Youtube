@@ -18,7 +18,9 @@ function NavBar() {
   return (
     <nav className="menu" style={{ position: 'fixed', zIndex: 5, width: '100%' }}>
       <div className="menu__logo">
-        <a href="/">Logo</a>
+        <a href="/">
+          <img src='https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F99185B3E5C1958D80E' style={{width:'40%', height:'30%'}}/>
+        </a>
       </div>
       <div className="menu__container">
         <div className="menu_left">
