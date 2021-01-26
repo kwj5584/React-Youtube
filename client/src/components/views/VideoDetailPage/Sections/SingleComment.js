@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 import LikeDislikes from './LikeDislikes'
 const { TextArea } = Input;
 function SingleComment(props) {
-    console.log('single:',props)
     const user = useSelector(state => state.user);
     const [CommentValue, setCommentValue] = useState("")
     const [OpenReply, setOpenReply] = useState(false)
@@ -48,13 +47,14 @@ function SingleComment(props) {
 
     return (
         <div>
+            { props.comment.writer &&
             <Comment
                 actions={actions}
                 author={props.comment.writer.name}
                 avatar={<Avatar src={props.comment.writer.image} alt='image'/>}
                 content={ <p>{props.comment.content}</p>}
             />
-
+            }
             {OpenReply &&
                 <form style={{ display: 'flex' }} onSubmit={onSubmit}>
                     <TextArea
