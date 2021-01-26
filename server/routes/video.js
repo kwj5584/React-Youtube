@@ -101,6 +101,10 @@ router.post('/getVideoDetail',(req,res)=>{
     Video.findOne({ "_id": req.body.videoId})
     .populate('writer')
     .exec((err, videoDetail)=>{
+        
+        videoDetail.views+=1;
+        let video = new Video(videoDetail)
+        video.save();
         if(err) return res.status(400).send(err)
         res.status(200).json({ success:true, videoDetail })
     })
