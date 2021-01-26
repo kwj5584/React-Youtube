@@ -15,11 +15,9 @@ function VideoDetailPage(props) {
     const variable = { videoId:videoId }
     useEffect(() => {
         if(props.user.userData){
-            // console.log('loginUser :',props.user.userData.name)
             setLoginUser(props.user.userData.name);
         }
         if(VideoDetail.writer){
-        // console.log('uploader is :',VideoDetail.writer.name)
             setUploader(VideoDetail.writer.name);
         }
         console.log('info:',uploader, loginUser)
@@ -30,7 +28,6 @@ function VideoDetailPage(props) {
         .then(res=>{
             if(res.data.success){
                 setVideoDetail(res.data.videoDetail)
-                // console.log('getVideoDetail:',res.data.videoDetail)
             }else{
                 alert('비디오 정보 가져오기 실패')
             }
@@ -44,7 +41,7 @@ function VideoDetailPage(props) {
             }
         })
     }, [])
-
+console.log('views:',VideoDetail.views)
     const refreshFunction = (newComment) =>{
         setComments(Comments.concat(newComment))
     }
@@ -61,7 +58,6 @@ function VideoDetailPage(props) {
             }
         })
     }
-
     if(VideoDetail.writer){
         const deleteButton = loginUser === uploader&& <button style={{backgroundColor: '#CC0000', borderRadius:"4px",
         color:'white', padding:'10px 16px',
@@ -76,18 +72,21 @@ function VideoDetailPage(props) {
                 <Col lg={18} xs={24}>
                     <div style={{ width: '100%', padding: '3rem 4em' }}>
                         <video style={{width:'100%'}} src={`http://localhost:5000/${VideoDetail.filePath}`} controls/>
-    
+                            
                         <List.Item
                             actions={[ <LikeDislikes video userId={localStorage.getItem('userId')} videoId={videoId} />, subscribeButton, deleteButton]}
                         >
                             <List.Item.Meta
-                                avatar={<Avatar src={VideoDetail.writer && VideoDetail.writer.image}/>}
                                 title={VideoDetail.title}
                                 description={VideoDetail.description}
                                 />
                             
                         </List.Item>
-    
+                        조회수 {VideoDetail.views}회
+                        <hr/>
+                        <Avatar src={VideoDetail.writer && VideoDetail.writer.image}/>&nbsp;&nbsp;
+                        <span>{VideoDetail.writer.name}</span>
+                        
                         {/* Comments*/}
                         <Comment refreshFunction={refreshFunction} commentLists={Comments} postId={videoId}/>
                     </div>
