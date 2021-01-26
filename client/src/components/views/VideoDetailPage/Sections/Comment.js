@@ -5,7 +5,6 @@ import SingleComment from './SingleComment'
 import ReplyComment from './ReplyComment'
 
 function Comment(props) {
-    console.log('comment:',props)
     const videoId = props.postId
     const user = useSelector(state => state.user);
     const [commentValue, setCommentValue] = useState('')
@@ -15,7 +14,7 @@ function Comment(props) {
     }
     const onSubmit = (e)=>{
         e.preventDefault();
-
+        if(user.userData._id){
         const commentVariable = {
             content: commentValue,
             writer: user.userData._id,
@@ -30,6 +29,9 @@ function Comment(props) {
                 alert('댓글 작성 실패')
             }
         })
+    }else{
+        alert('로그인 후 댓글 작성 가능합니다.')
+    }
     }
     return (
         <div>
