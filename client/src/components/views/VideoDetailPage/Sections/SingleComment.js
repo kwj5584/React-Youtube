@@ -6,9 +6,10 @@ import LikeDislikes from './LikeDislikes'
 const { TextArea } = Input;
 function SingleComment(props) {
     const user = useSelector(state => state.user);
+    //loginUser : user.userData.name
+    //commentWriter : props.comment._id
     const [CommentValue, setCommentValue] = useState("")
     const [OpenReply, setOpenReply] = useState(false)
-
     const handleChange = (e) => {
         setCommentValue(e.currentTarget.value)
     }
@@ -19,7 +20,6 @@ function SingleComment(props) {
 
     const onSubmit = (e) => {
         e.preventDefault();
-
         const variables = {
             content: CommentValue,
             writer: user.userData._id,
@@ -27,7 +27,6 @@ function SingleComment(props) {
             responseTo: props.comment._id,
             
         }
-
         axios.post('/api/comment/saveComment', variables)
             .then(res => {
                 if (res.data.success) {
@@ -39,11 +38,25 @@ function SingleComment(props) {
                 }
             })
     }
-
+    const onDeleteComment = (id) => {
+        console.log('clicked',id)
+        const variable = {id: id}
+        axios.post('/api/comment/deleteComment',variable)
+        .then(res=>{
+            if(res.data.success){
+                alert('댓글 삭제 성공')
+                window.location.reload();
+            }else{
+                alert('댓글 삭제 실패')
+            }
+        })
+    }
+    if(props.comment.writer){
+        var deleteComment = user.userData._id === props.comment.writer._id && <button onClick={(e)=>onDeleteComment(props.comment._id)}>Delete</button>
+    }
     const actions = [
         <LikeDislikes userId={localStorage.getItem('userId')} commentId={props.comment._id}/>
-        ,<span onClick={openReply} key="comment-basic-reply-to">Reply to </span>
-    ]
+        ,<span onClick={openReply} key="comment-basic-reply-to">Reply to </span>, deleteComment ]
 
     return (
         <div>
