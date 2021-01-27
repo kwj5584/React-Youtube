@@ -6,6 +6,7 @@ const { auth } = require("../middleware/auth");
 const multer = require('multer');
 var ffmpeg = require('fluent-ffmpeg');
 const { Subscriber } = require('../models/Subscriber');
+const { Comment } = require('../models/Comment');
 
 
 let storage = multer.diskStorage({
@@ -101,12 +102,11 @@ router.post('/getVideoDetail',(req,res)=>{
     Video.findOne({ "_id": req.body.videoId})
     .populate('writer')
     .exec((err, videoDetail)=>{
-        
         videoDetail.views+=1;
         let video = new Video(videoDetail)
         video.save();
         if(err) return res.status(400).send(err)
-        res.status(200).json({ success:true, videoDetail })
+        res.status(200).json({success:true, videoDetail })
     })
 })
 
@@ -132,11 +132,15 @@ router.post('/getSubscriptionVideos',(req,res)=>{
 
 router.post('/deleteVideo',(req,res)=>{
     console.log('deletevideo:',req.body.videoId)
-    Video.findOneAndDelete({"_id":req.body.videoId})
-    .exec((err,doc)=>{
-        if(err) return res.status(400).json({success:false,err})
-        res.status(200).json({success:true,doc})
+    Video.findOneAndDelete({"_id":req.body.videoId},(err,doc)=>{
+        if(err) return res.status(400).send(err)
     })
+        Comment.deleteMany({postId:req.body.videoId})
+        .exec((err,result)=>{
+            if(err) return res.status(400).json({success:false,err})
+            res.status(200).json({success:true})
+        })
+    
 })
 
 module.exports = router;
