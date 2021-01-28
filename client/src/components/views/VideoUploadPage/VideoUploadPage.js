@@ -94,7 +94,7 @@ function VideoUploadPage(props) {
                 message.success('성공적으로 업로드를 했습니다.')
                 setTimeout(() => {
                     props.history.push('/')    
-                }, 3000);
+                }, 2000);
                 
             }else{
                 alert('비디오 업로드 실패')
@@ -112,7 +112,7 @@ function VideoUploadPage(props) {
                         <Dropzone
                         onDrop={onDrop}
                         multiple={false} // 한번에 파일 한개 올릴거면 false
-                        maxSize={10000000}
+                        maxSize={1000000000000}
                         >
                         {({getRootProps, getInputProps}) => (
                             <div style={{width:'300px', height:'240px', border:'1px solid lightgray', display:'flex',
