@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import {useSelector} from 'react-redux'
 import SingleComment from './SingleComment'
@@ -31,6 +32,7 @@ function Comment(props) {
         })
     }else{
         alert('로그인 후 댓글 작성 가능합니다.')
+        props.history.push('/login')
     }
     }
     return (
@@ -62,4 +64,4 @@ function Comment(props) {
     )
 }
 
-export default Comment
+export default withRouter(Comment)

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { withRouter } from 'react-router-dom'
 import { Comment, Avatar, Button, Input } from 'antd';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
@@ -8,6 +9,7 @@ function SingleComment(props) {
     const user = useSelector(state => state.user);
     //loginUser : user.userData.name
     //commentWriter : props.comment._id
+    const videoId = props.postId
     const [CommentValue, setCommentValue] = useState("")
     const [OpenReply, setOpenReply] = useState(false)
     const handleChange = (e) => {
@@ -18,25 +20,27 @@ function SingleComment(props) {
         setOpenReply(!OpenReply)
     }
 
-    const onSubmit = (e) => {
+    const onSubmit = (e)=>{
         e.preventDefault();
-        const variables = {
+        if(user.userData._id){
+        const commentVariable = {
             content: CommentValue,
             writer: user.userData._id,
-            postId: props.postId,
-            responseTo: props.comment._id,
-            
+            postId: videoId
         }
-        axios.post('/api/comment/saveComment', variables)
-            .then(res => {
-                if (res.data.success) {
-                    setCommentValue("")
-                    setOpenReply(false)
-                    props.refreshFunction(res.data.result)
-                } else {
-                    alert('Failed to save Comment')
-                }
-            })
+        axios.post('/api/comment/saveComment', commentVariable)
+        .then(res=>{
+            if(res.data.success){
+                setCommentValue('')
+                props.refreshFunction(res.data.result)
+            }else{
+                alert('댓글 작성 실패')
+            }
+        })
+    }else{
+        alert('로그인 후 댓글 작성 가능합니다.')
+        props.history.push('/login')
+    }
     }
     const onDeleteComment = (id) => {
         console.log('clicked',id)
@@ -85,4 +89,4 @@ function SingleComment(props) {
     )
 }
 
-export default SingleComment
+export default withRouter(SingleComment)
