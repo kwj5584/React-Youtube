@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import {Row, Col, List, Avatar} from 'antd'
 import axios from 'axios'
+import GifPlayer from 'react-gif-player'
 import SideVideo from './Sections/SideVideo'
 import Subscribe from './Sections/Subscribe'
 import Comment from './Sections/Comment'
@@ -12,6 +13,7 @@ function VideoDetailPage(props) {
     const [Comments, setComments] = useState([])
     const [loginUser, setLoginUser] = useState('')
     const [uploader, setUploader] = useState('')
+    const [videoType, setVideoType] = useState('')
     const variable = { videoId:videoId }
     useEffect(() => {
         if(props.user.userData){
@@ -20,7 +22,6 @@ function VideoDetailPage(props) {
         if(VideoDetail.writer){
             setUploader(VideoDetail.writer.name);
         }
-        console.log('info:',uploader, loginUser)
     })
     
     useEffect(() => {
@@ -28,6 +29,7 @@ function VideoDetailPage(props) {
         .then(res=>{
             if(res.data.success){
                 setVideoDetail(res.data.videoDetail)
+                setVideoType(res.data.videoDetail.filePath)
             }else{
                 alert('비디오 정보 가져오기 실패')
             }
@@ -41,7 +43,8 @@ function VideoDetailPage(props) {
             }
         })
     }, [])
-console.log('views:',VideoDetail.views)
+    console.log(videoType.slice(-3))
+    
     const refreshFunction = (newComment) =>{
         setComments(Comments.concat(newComment))
     }
@@ -71,8 +74,10 @@ console.log('views:',VideoDetail.views)
             <Row gutter={[16,16]}>
                 <Col lg={18} xs={24}>
                     <div style={{ width: '100%', padding: '3rem 4em' }}>
+                        { videoType.slice(-3) === 'mp4'?
                         <video style={{width:'100%'}} src={`http://localhost:5000/${VideoDetail.filePath}`} controls/>
-                            
+                        : <GifPlayer style={{width:'50%'}} gif={`http://localhost:5000/${VideoDetail.filePath}`} />
+                        }    
                         <List.Item
                             actions={[ <LikeDislikes video userId={localStorage.getItem('userId')} videoId={videoId} />, subscribeButton, deleteButton]}
                         >
