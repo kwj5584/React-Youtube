@@ -101,6 +101,9 @@ function VideoUploadPage(props) {
             }
         })
     }
+    const onReset = ()=>{
+        props.history.push('/')
+    }
     return (
         <div style={{ maxWidth:'700px', margin:'2rem auto'}}>
             <div style={{ textAlign:'center', marginBottom:'2rem'}}>
@@ -169,6 +172,9 @@ function VideoUploadPage(props) {
             <br/>
             <Button type='primary' size='large' onClick={onSubmit}>
                 Submit
+            </Button>&nbsp;
+            <Button type='danger' size='large' onClick={onReset}>
+                Back
             </Button>
             </Form>
         </div>
