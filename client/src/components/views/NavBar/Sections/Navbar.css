@@ -44,6 +44,12 @@
   float: right;
 }
 
+.menu__container .menu_center{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .menu__mobile-button {
   float: right;
   height: 32px;
@@ -68,8 +74,10 @@
   }
 
   .menu_left,
-  .menu_rigth {
+  .menu_rigth,
+  .menu_center{
     display: none;
+    padding: 0 4px;
   }
 
   .menu__logo a {
