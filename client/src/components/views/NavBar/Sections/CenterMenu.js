@@ -16,12 +16,11 @@ function CenterMenu(props) {
     }
     
     return (
-        <div style={{display:'inline-block', textAlign:'center'}}>
+        <div>
             <form onSubmit={onSearch} style={{marginTop: '9px', padding:'6px', height:'32px'}}>
-                <input type='text' style={{marginTop:'5px', width:'80%', height:'29px' }} placeholder='search..' onChange={onChangeSearch} />
-                
-                    <button onSubmit={onSearch} style={{height:'32px'}} >
-                    {<SearchOutlined style={{ width:'100%', height:'20px'}} />}
+                <input type='text' style={{marginTop:'5px', width:'85%' }} placeholder='search..' onChange={onChangeSearch} />
+                    <button onSubmit={onSearch}  >
+                    {<SearchOutlined  />}
                     </button>
                 
             </form>
