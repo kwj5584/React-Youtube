@@ -19,6 +19,12 @@
   padding: 19px 20px;
 }
 
+.menu__container{
+  display:flex;
+  flex-direction: row;
+  flex-wrap:nowrap;
+  justify-content: space-between;
+}
 .menu__container .ant-menu-item {
   padding: 0px 5px;
 }
@@ -45,9 +51,10 @@
 }
 
 .menu__container .menu_center{
-  display: inline-flex;
+  /* display: inline-flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+  float:left
 }
 
 .menu__mobile-button {
