@@ -23,22 +23,22 @@ function LeftMenu(props) {
     } 
     })
   }, [])
-  if(Video){
-  
   for(let i=0; i<Video.length; i++){
     Subscribe.push(Video[i].writer.name)
   }
-}
 const SubscribeUser = new Set(Subscribe)
+
 const renderSubscribe = SubscribeUser.map((subscribe,index)=>{
   return (
-    <div>
-      {subscribe}  
-    </div>
+      <Menu>
+        <Menu.Item>
+        <a href=''>{subscribe}</a>
+        </Menu.Item>
+      </Menu>
   )
   })
   const menu = (
-    <Menu mode={props.mode}>
+    <Menu>
     <Menu.Item>
       <a href='/'>{<HomeOutlined/>} 홈</a>
     </Menu.Item>
@@ -48,9 +48,8 @@ const renderSubscribe = SubscribeUser.map((subscribe,index)=>{
     </Menu.Item>
     <hr/>
     <div style={{marginLeft:'13px'}}>구독</div>
-    <Menu.Item>
       {renderSubscribe}
-    </Menu.Item>
+    <hr/>
   </Menu>
   )
   return (
