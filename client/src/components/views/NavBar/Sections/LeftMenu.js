@@ -1,26 +1,26 @@
 import React,{useEffect, useState} from 'react';
 import {useSelector} from 'react-redux'
-import { Menu, Dropdown } from 'antd';
+import { Menu, Dropdown, Avatar } from 'antd';
 import {MenuOutlined, HomeOutlined, GroupOutlined} from '@ant-design/icons'
 import axios from 'axios';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
 function LeftMenu(props) {
-  // const user = useSelector(state => state.user)
+  const user = useSelector(state => state.user)
   const [Video, setVideo] = useState([])
   const Subscribe = [];
   useEffect(() => {
       const subscriptionVariable = {
         userFrom : localStorage.getItem('userId')
-    }
+      }
     axios.post('/api/video/getSubscriptionVideos',subscriptionVariable)
     .then(res=>{
       if(res.data.success){
         setVideo(res.data.videos)
     } else{
         alert('비디오 가져오기 실패')
-    }
+    } 
     })
   }, [])
   if(Video){
@@ -30,7 +30,13 @@ function LeftMenu(props) {
   }
 }
 const SubscribeUser = new Set(Subscribe)
-console.log('leftmenu:',SubscribeUser)
+const renderSubscribe = SubscribeUser.map((subscribe,index)=>{
+  return (
+    <div>
+      {subscribe}  
+    </div>
+  )
+  })
   const menu = (
     <Menu mode={props.mode}>
     <Menu.Item>
@@ -43,7 +49,7 @@ console.log('leftmenu:',SubscribeUser)
     <hr/>
     <div style={{marginLeft:'13px'}}>구독</div>
     <Menu.Item>
-      {SubscribeUser}
+      {renderSubscribe}
     </Menu.Item>
   </Menu>
   )
