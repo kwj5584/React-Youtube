@@ -132,7 +132,6 @@ router.post('/getSubscriptionVideos',(req,res)=>{
 })
 
 router.post('/deleteVideo',(req,res)=>{
-    console.log('deletevideo:',req.body.videoId)
     Video.findOneAndDelete({"_id":req.body.videoId},(err,doc)=>{
         if(err) return res.status(400).send(err)
     })
@@ -145,12 +144,10 @@ router.post('/deleteVideo',(req,res)=>{
 })
 
 router.post('/search',(req,res)=>{
-    console.log('search api:',req.body.search)
-
     User.find({"name": { $regex : req.body.search}},(err,name)=>{
         if(err) return res.status(400).json({success:false,err})
         const userName = name;
-    
+        
     Video.find().or([
         { title:{ $regex : req.body.search }},
         { descripton:{ $regex : req.body.search } },
@@ -162,5 +159,19 @@ router.post('/search',(req,res)=>{
         res.status(200).json({success:true, videoList})
     })
 })
+})
+
+router.post('/userDetail',(req,res)=>{
+    User.find({'name':req.body.user},(err,name)=>{
+        if(err) return res.status(400).json({success:false,err})
+        const userName = name;
+        
+        Video.find({writer:userName})
+        .populate('writer')
+        .exec((err,videoList)=>{
+            if(err) return res.status(400).json({success:false,err})
+            res.status(200).json({success:true, videoList})
+        })
+    })
 })
 module.exports = router;
