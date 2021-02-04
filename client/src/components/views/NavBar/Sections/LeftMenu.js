@@ -3,6 +3,7 @@ import {useSelector} from 'react-redux'
 import { Menu, Dropdown, Avatar } from 'antd';
 import {MenuOutlined, HomeOutlined, GroupOutlined} from '@ant-design/icons'
 import axios from 'axios';
+import {withRouter} from 'react-router-dom'
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
@@ -23,6 +24,13 @@ function LeftMenu(props) {
     } 
     })
   }, [])
+  
+  const userPageHandler = (subscribe) =>{
+    props.history.push({
+      pathname:`/userPage/${subscribe}`,
+      state:{user:subscribe}
+    })
+  }
   for(let i=0; i<Video.length; i++){
     Subscribe.push(Video[i].writer.name)
   }
@@ -30,9 +38,9 @@ const SubscribeUser = new Set(Subscribe)
 
 const renderSubscribe = SubscribeUser.map((subscribe,index)=>{
   return (
-      <Menu>
+      <Menu key={index}>
         <Menu.Item>
-        <a href=''>{subscribe}</a>
+        <a onClick={(e)=>userPageHandler(subscribe)}>{subscribe}</a>
         </Menu.Item>
       </Menu>
   )
@@ -40,7 +48,7 @@ const renderSubscribe = SubscribeUser.map((subscribe,index)=>{
   const menu = (
     <Menu>
     <Menu.Item>
-      <a href='/'>{<HomeOutlined/>} 홈</a>
+      <a href={`/userPage`}>{<HomeOutlined/>} 홈</a>
     </Menu.Item>
 
     <Menu.Item key="subscription">
@@ -59,4 +67,4 @@ const renderSubscribe = SubscribeUser.map((subscribe,index)=>{
   )
 }
 
-export default LeftMenu
+export default withRouter(LeftMenu)
