@@ -19,7 +19,7 @@ function UserPage(props) {
                 alert('유저정보 불러오기 실패')
             }
         })
-    })
+    },[userInfo])
     const renderCards = Video.map((video,index)=>{
         var minutes = Math.floor(video.duration / 60);
         var seconds = Math.floor((video.duration- minutes*60));
