@@ -23,7 +23,7 @@ function LeftMenu(props) {
         alert('비디오 가져오기 실패')
     } 
     })
-  }, [])
+  }, [localStorage.getItem('userId')])
   
   const userPageHandler = (subscribe) =>{
     props.history.push({
