@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import {UserOutlined} from '@ant-design/icons'
 
 function RightMenu(props) {
+  console.log(props)
   const user = useSelector(state => state.user)
 
   const [visible, setVisible] = useState(false)
