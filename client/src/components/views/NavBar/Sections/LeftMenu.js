@@ -1,6 +1,5 @@
 import React,{useEffect, useState} from 'react';
-import {useSelector} from 'react-redux'
-import { Menu, Dropdown, Avatar } from 'antd';
+import { Menu, Drawer } from 'antd';
 import {MenuOutlined, HomeOutlined, GroupOutlined} from '@ant-design/icons'
 import axios from 'axios';
 import {withRouter} from 'react-router-dom'
@@ -8,8 +7,10 @@ const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
 function LeftMenu(props) {
-  const user = useSelector(state => state.user)
   const [Video, setVideo] = useState([])
+  const [visible, setVisible] = useState(false)
+
+  
   const Subscribe = [];
   useEffect(() => {
       const subscriptionVariable = {
@@ -24,7 +25,13 @@ function LeftMenu(props) {
     } 
     })
   }, [localStorage.getItem('userId')])
-  
+
+  const showDrawer = () => {
+    setVisible(true)
+  };
+  const onClose = () => {
+    setVisible(false)
+  };
   const userPageHandler = (subscribe) =>{
     props.history.push({
       pathname:`/userPage/${subscribe}`,
@@ -61,9 +68,17 @@ const renderSubscribe = SubscribeUser.map((subscribe,index)=>{
   </Menu>
   )
   return (
-    <Dropdown overlay={menu}>
-      <MenuOutlined style={{marginTop:'25px'}}/>
-    </Dropdown>
+    <div>
+      <MenuOutlined onClick={showDrawer} style={{marginTop:'25px'}}/>
+      <Drawer 
+        placement='left'
+        closable={false}
+        onClose={onClose}
+        visible={visible}
+      >
+        {menu}
+      </Drawer>
+    </div>
   )
 }
 
