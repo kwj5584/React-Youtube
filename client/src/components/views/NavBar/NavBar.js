@@ -7,8 +7,8 @@ import CenterMenu from './Sections/CenterMenu'
 import './Sections/Navbar.css';
 
 function NavBar(props) {
+  console.log('NavBar:',props)
   const [visible, setVisible] = useState(false)
-  
 
   const showDrawer = () => {
     setVisible(true)
@@ -27,7 +27,7 @@ function NavBar(props) {
       </div>
       <div className="menu__container">
         <div className="menu_left">
-          <LeftMenu mode="horizontal" />
+          <LeftMenu />
         </div>
         <div className="menu_center">
           <CenterMenu mode='horizontal'/>

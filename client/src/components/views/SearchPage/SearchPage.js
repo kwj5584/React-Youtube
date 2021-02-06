@@ -7,6 +7,7 @@ const {Meta} = Card
 
 
 function SearchPage(props) {
+    console.log('searchPage :',props.location.state.searchResult)
     const [FindVideo, setFindVideo] = useState([])
     useEffect(() => {
         let variable = {search : props.location.state.searchResult}
