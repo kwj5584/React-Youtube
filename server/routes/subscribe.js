@@ -3,7 +3,6 @@ const router = express.Router();
 
 const { auth } = require("../middleware/auth");
 const { Subscriber } = require('../models/Subscriber');
-
 //=================================
 //             Subscribe
 //=================================
@@ -41,6 +40,16 @@ router.post('/subscribe',(req,res)=>{
     subscribe.save((err,doc)=>{
         if(err) return res.status(400).json({success:false,err})
         res.status(200).json({success:true})
+    })
+})
+
+router.post('/getSubscribe',(req,res)=>{
+    
+    Subscriber.find({'userFrom':req.body.userFrom})
+    .populate('userTo')
+    .exec((err,subscribeInfo)=>{
+        if(err) return res.status(400).json({success:false, err})
+        res.status(200).json({success:true,subscribeInfo})
     })
 })
 module.exports = router;

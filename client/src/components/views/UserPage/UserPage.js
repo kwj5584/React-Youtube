@@ -9,13 +9,11 @@ const {Meta} = Card
 function UserPage(props) {
     const [Video, setVideo] = useState([])
     const userInfo = props.location.state.user;
-    console.log('userPage:',userInfo)
     useEffect(() => {
         let variable = {user:userInfo}
         axios.post('/api/video/userDetail',variable)
         .then(res=>{
             if(res.data.success){
-                console.log('userDetail:',res.data)
                 setVideo(res.data.videoList)
             }else{
                 alert('유저정보 불러오기 실패')

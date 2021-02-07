@@ -43,14 +43,12 @@ function VideoDetailPage(props) {
             }
         })
     }, [])
-    console.log(videoType.slice(-3))
     
     const refreshFunction = (newComment) =>{
         setComments(Comments.concat(newComment))
     }
 
     const videoDelete = () =>{
-        console.log('deleteVideo :',variable)
         axios.post('/api/video/deleteVideo', variable)
         .then(res=>{
             if(res.data.success){
