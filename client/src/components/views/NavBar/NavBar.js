@@ -7,7 +7,6 @@ import CenterMenu from './Sections/CenterMenu'
 import './Sections/Navbar.css';
 
 function NavBar(props) {
-  console.log('NavBar:',props)
   const [visible, setVisible] = useState(false)
 
   const showDrawer = () => {
