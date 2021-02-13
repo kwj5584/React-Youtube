@@ -13,7 +13,6 @@ function SearchPage(props) {
         axios.post('/api/video/search',variable)
         .then(res=>{
         if(res.data.success){
-            console.log(res.data.videoList)
             setFindVideo(res.data.videoList)
             }else{
                 alert('검색 오류')
