@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react'
-import {Card, Icon, Avatar, Col, Typography, Row} from 'antd';
+import {Card, Icon, Avatar, Col, Typography, Row, Tooltip} from 'antd';
 import axios from 'axios'
 import moment from 'moment';
 const {Title} = Typography
@@ -43,7 +43,9 @@ function LandingPage(props) {
                         }
                         title={video.title}
                     />
+                    <Tooltip placement='topLeft' title={video.writer.name}>
                     <a style={{color:'black'}}onClick={(e)=>userPageHandler(video.writer.name)}>{video.writer.name}</a><br/>
+                    </Tooltip>
                     <span style={{marginLeft:'3rem'}}>조회수 {video.views} 회</span>
                      - <span>{moment(video.createdAt).format('MMM Do YY')}</span> {/**업데이트 한 날짜 */}
                 </Col>

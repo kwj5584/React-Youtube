@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react'
-import {Card, Icon, Avatar, Col, Typography, Row} from 'antd';
+import {Card, Icon, Avatar, Col, Typography, Row, Tooltip} from 'antd';
 import axios from 'axios'
 import moment from 'moment';
 
@@ -42,7 +42,9 @@ function SubscriptionPage() {
                         title={video.title}
                         description=""
                     />
+                    <Tooltip placement='topLeft' title={video.writer.name}>
                     <span>{video.writer.name}</span><br/>
+                    </Tooltip>
                     <span style={{marginLeft:'3rem'}}>{video.views} views</span>
                      - <span>{moment(video.createdAt).format('MMM Do YY')}</span> {/**업데이트 한 날짜 */}
                 </Col>
