@@ -6,7 +6,7 @@ import moment from 'moment';
 const {Title} = Typography
 const {Meta} = Card
 
-function SubscriptionPage() {
+function SubscriptionPage(props) {
     const [Video, setVideo] = useState([])
     useEffect(() => {
         const subscriptionVariable = {
@@ -21,6 +21,12 @@ function SubscriptionPage() {
             }
         })
     }, [])
+    const userPageHandler = (name)=>{
+        props.history.push({
+            pathname:`/userPage/${name}`,
+            state:{user:name}
+        })
+    }
     const renderCards = Video.map((video,index)=>{
         var minutes = Math.floor(video.duration / 60);
         var seconds = Math.floor((video.duration- minutes*60));
@@ -43,7 +49,7 @@ function SubscriptionPage() {
                         description=""
                     />
                     <Tooltip placement='topLeft' title={video.writer.name}>
-                    <span>{video.writer.name}</span><br/>
+                    <a style={{color:'black'}}onClick={(e)=>userPageHandler(video.writer.name)}>{video.writer.name}</a><br/>
                     </Tooltip>
                     <span style={{marginLeft:'3rem'}}>{video.views} views</span>
                      - <span>{moment(video.createdAt).format('MMM Do YY')}</span> {/**업데이트 한 날짜 */}
