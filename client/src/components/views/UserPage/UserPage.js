@@ -1,12 +1,13 @@
 import React,{useEffect, useState} from 'react'
 import axios from 'axios'
 import {withRouter} from 'react-router-dom'
-import {Card, Icon, Avatar, Col, Typography, Row, Tooltip} from 'antd';
+import {Card, Icon, Avatar, Col, Typography, Row} from 'antd';
 import moment from 'moment';
 const {Title} = Typography
 const {Meta} = Card
 
 function UserPage(props) {
+    
     const [Video, setVideo] = useState([])
     const userInfo = props.location.state.user;
     useEffect(() => {
@@ -20,6 +21,18 @@ function UserPage(props) {
             }
         })
     },[userInfo])
+    const renderingUser = Video.map((video,index)=>{
+        return(
+            <Meta
+                key={index}
+                avatar ={
+                    <Avatar src={video.writer.image}/> // 업로더 정보 
+                    }
+                    title={video.writer.name}
+            />
+        )
+    })
+
     const renderCards = Video.map((video,index)=>{
         var minutes = Math.floor(video.duration / 60);
         var seconds = Math.floor((video.duration- minutes*60));
@@ -34,23 +47,18 @@ function UserPage(props) {
                     </a>
                 </div>
                     <br/>
-                    <Meta
-                        avatar ={
-                            <Avatar src={video.writer.image}/> // 업로더 정보 
-                        }
-                        title={video.title}
-                    />
-                    <Tooltip placement='topLeft' title={video.writer.name}>
-                    <span>{video.writer.name}</span><br/>
-                    </Tooltip>
-                    <span style={{marginLeft:'3rem'}}>조회수 {video.views} 회</span>
+                    <span>{video.title}</span>
+                    <br/>
+                    <span >조회수 {video.views} 회</span>
                      - <span>{moment(video.createdAt).format('MMM Do YY')}</span> {/**업데이트 한 날짜 */}
                 </Col>
         )
     })
     return (
         <div style={{width:'85%', margin: '3rem auto'}}>
-            <Title level={2}>Recommended</Title>
+            <Title level={2}>
+                {renderingUser}
+            </Title>
             <hr/>
             <Row gutter={[32,16]}>
                 {renderCards}
