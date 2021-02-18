@@ -67,7 +67,7 @@ function VideoDetailPage(props) {
         onClick={videoDelete}
     >Delete</button>
 
-        const subscribeButton = VideoDetail.writer._id !== localStorage.getItem('userId') &&  <Subscribe userTo={VideoDetail.writer._id} userFrom={localStorage.getItem('userId')}/>
+        const subscribeButton = VideoDetail.writer._id !== sessionStorage.getItem('userId') &&  <Subscribe userTo={VideoDetail.writer._id} userFrom={sessionStorage.getItem('userId')}/>
         return (
             <Row gutter={[16,16]}>
                 <Col lg={18} xs={24}>
@@ -77,7 +77,7 @@ function VideoDetailPage(props) {
                         : <GifPlayer style={{width:'50%'}} gif={`http://localhost:5000/${VideoDetail.filePath}`} />
                         }    
                         <List.Item
-                            actions={[ <LikeDislikes video userId={localStorage.getItem('userId')} videoId={videoId} />, subscribeButton, deleteButton]}
+                            actions={[ <LikeDislikes video userId={sessionStorage.getItem('userId')} videoId={videoId} />, subscribeButton, deleteButton]}
                         >
                             <List.Item.Meta
                                 title={VideoDetail.title}

@@ -12,7 +12,7 @@ function LeftMenu(props) {
 
   useEffect(() => {
     const subscriptionVariable = {
-      userFrom : localStorage.getItem('userId')
+      userFrom : sessionStorage.getItem('userId')
     }
     axios.post('/api/subscribe/getSubscribe',subscriptionVariable)
     .then(res=>{
@@ -22,7 +22,7 @@ function LeftMenu(props) {
         alert('구독 정보 가져오기 실패')
       }
     })
-  }, [localStorage.getItem('userId')])
+  }, [sessionStorage.getItem('userId')])
   const showDrawer = () => {
     setVisible(true)
   };

@@ -13,7 +13,7 @@ function Subscribe(props) {
                 alert('구독자 수 정보를 받아오지 못했습니다.')
             }
         })
-        let subscribedVariable = {userTo: props.userTo, userFrom:localStorage.getItem('userId')}
+        let subscribedVariable = {userTo: props.userTo, userFrom:sessionStorage.getItem('userId')}
         axios.post('/api/subscribe/subscribed',subscribedVariable)
         .then(res=>{
             if(res.data.success){

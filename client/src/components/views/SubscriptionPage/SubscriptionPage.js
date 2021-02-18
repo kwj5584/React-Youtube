@@ -10,7 +10,7 @@ function SubscriptionPage(props) {
     const [Video, setVideo] = useState([])
     useEffect(() => {
         const subscriptionVariable = {
-            userFrom : localStorage.getItem('userId')
+            userFrom : sessionStorage.getItem('userId')
         }
         axios.post('/api/video/getSubscriptionVideos',subscriptionVariable)
         .then(res=>{

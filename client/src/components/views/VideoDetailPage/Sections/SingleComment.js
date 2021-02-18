@@ -59,7 +59,7 @@ function SingleComment(props) {
         var deleteComment = user.userData._id === props.comment.writer._id && <button onClick={(e)=>onDeleteComment(props.comment._id)}>Delete</button>
     }
     const actions = [
-        <LikeDislikes userId={localStorage.getItem('userId')} commentId={props.comment._id}/>
+        <LikeDislikes userId={sessionStorage.getItem('userId')} commentId={props.comment._id}/>
         ,<span onClick={openReply} key="comment-basic-reply-to">Reply to </span>, deleteComment ]
 
     return (
