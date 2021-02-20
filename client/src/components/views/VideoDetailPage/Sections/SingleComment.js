@@ -26,13 +26,15 @@ function SingleComment(props) {
         const commentVariable = {
             content: CommentValue,
             writer: user.userData._id,
-            postId: videoId
+            postId: videoId,
+            responseTo : props.comment._id
         }
         axios.post('/api/comment/saveComment', commentVariable)
         .then(res=>{
             if(res.data.success){
                 setCommentValue('')
                 props.refreshFunction(res.data.result)
+                setOpenReply(false)
             }else{
                 alert('댓글 작성 실패')
             }
