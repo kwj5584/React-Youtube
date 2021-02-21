@@ -5,7 +5,6 @@ import moment from 'moment';
 const {Title} = Typography
 const {Meta} = Card
 
-
 function SearchPage(props) {
     const [FindVideo, setFindVideo] = useState([])
     useEffect(() => {
@@ -19,6 +18,7 @@ function SearchPage(props) {
         }
     })
     }, [])
+    
     const renderCards = FindVideo.map((video,index)=>{
         var minutes = Math.floor(video.duration / 60);
         var seconds = Math.floor((video.duration- minutes*60));

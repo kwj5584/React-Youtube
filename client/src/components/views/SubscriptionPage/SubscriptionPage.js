@@ -21,12 +21,14 @@ function SubscriptionPage(props) {
             }
         })
     }, [])
+
     const userPageHandler = (name)=>{
         props.history.push({
             pathname:`/userPage/${name}`,
             state:{user:name}
         })
     }
+
     const renderCards = Video.map((video,index)=>{
         var minutes = Math.floor(video.duration / 60);
         var seconds = Math.floor((video.duration- minutes*60));
@@ -56,6 +58,7 @@ function SubscriptionPage(props) {
                 </Col>
         )
     })
+    
     return (
         <div style={{width:'85%', margin: '3rem auto'}}>
             <Title level={2}>Recommended</Title>

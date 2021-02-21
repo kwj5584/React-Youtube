@@ -3,6 +3,7 @@ import axios from 'axios'
 function Subscribe(props) {
     const [SubscribeNumber, setSubscribeNumber] = useState(0)
     const [Subscribed, setSubscribed] = useState(false)
+    
     useEffect(() => {
         let variable = {userTo:props.userTo}
         axios.post('/api/subscribe/subscriberNumber',variable)
@@ -23,6 +24,7 @@ function Subscribe(props) {
             }
         })
     }, [])
+
     const onSubscribe = () =>{
         let subscribeVariable={
             // 로그인 정보와 게시자 정보

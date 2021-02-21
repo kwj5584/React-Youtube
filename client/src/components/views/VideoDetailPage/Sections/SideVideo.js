@@ -13,10 +13,10 @@ function SideVideo() {
             }
         })
     }, [])
+
     const renderSideVideo = sideVideos.map((video,index)=>{
         var minutes = Math.floor(video.duration / 60);
         var seconds = Math.floor((video.duration- minutes*60));
-
             return (
                 <div key={index} style={{ display: 'flex', marginTop: '1rem', padding: '0 2rem' }}>
                     <div style={{width:'40%', marginRight:'1rem'}}>
@@ -36,6 +36,7 @@ function SideVideo() {
         </div>
         )
     })
+    
     return (
         <React.Fragment>
             <div style={{marginTop:'3rem'}} />

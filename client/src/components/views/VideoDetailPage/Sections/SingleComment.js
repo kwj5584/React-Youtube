@@ -7,8 +7,6 @@ import LikeDislikes from './LikeDislikes'
 const { TextArea } = Input;
 function SingleComment(props) {
     const user = useSelector(state => state.user);
-    //loginUser : user.userData.name
-    //commentWriter : props.comment._id
     const videoId = props.postId
     const [CommentValue, setCommentValue] = useState("")
     const [OpenReply, setOpenReply] = useState(false)
@@ -42,8 +40,8 @@ function SingleComment(props) {
     }else{
         alert('로그인 후 댓글 작성 가능합니다.')
         props.history.push('/login')
-    }
-    }
+    }}
+    
     const onDeleteComment = (id) => {
         console.log('clicked',id)
         const variable = {id: id}

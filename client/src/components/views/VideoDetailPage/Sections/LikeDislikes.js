@@ -50,6 +50,7 @@ function LikeDislikes(props) {
         })
         
     }, [])
+
     const onLike = () =>{
         if(LikeAction === null) {  // 좋아요버튼 클릭이 안되있을 때
             axios.post('/api/like/upLike', variable)
@@ -78,6 +79,7 @@ function LikeDislikes(props) {
             })
         }
     }
+
     const onDislike = () =>{
         if(DislikeAction !== null) {  // 싫어요버튼 클릭이 안되있을 때
             axios.post('/api/like/unDislike', variable)
@@ -107,6 +109,7 @@ function LikeDislikes(props) {
             })
         }
     }
+    
     return (
         <div>
             <span key="comment-basic-like">

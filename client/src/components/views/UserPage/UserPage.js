@@ -7,7 +7,6 @@ const {Title} = Typography
 const {Meta} = Card
 
 function UserPage(props) {
-    
     const [Video, setVideo] = useState([])
     const userInfo = props.location.state.user;
     useEffect(() => {
@@ -21,6 +20,7 @@ function UserPage(props) {
             }
         })
     },[userInfo])
+
     const renderingUser = Video.map((video,index)=>{
         return(
             <Meta
@@ -54,6 +54,7 @@ function UserPage(props) {
                 </Col>
         )
     })
+    
     return (
         <div style={{width:'85%', margin: '3rem auto'}}>
             <Title level={2}>

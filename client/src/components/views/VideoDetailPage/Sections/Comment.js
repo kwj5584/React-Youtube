@@ -33,8 +33,8 @@ function Comment(props) {
     }else{
         alert('로그인 후 댓글 작성 가능합니다.')
         props.history.push('/login')
-    }
-    }
+    }}
+    
     return (
         <div>
             <br/>
