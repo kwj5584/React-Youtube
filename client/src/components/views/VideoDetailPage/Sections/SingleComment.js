@@ -55,8 +55,11 @@ function SingleComment(props) {
             }
         })
     }
-    if(props.comment.writer){
-        var deleteComment = user.userData._id === props.comment.writer._id && <button onClick={(e)=>onDeleteComment(props.comment._id)}>Delete</button>
+    if(props.comment.writer._id){
+        var deleteComment = user.userData._id === props.comment.writer._id && 
+        <div>
+            <button onClick={(e)=>onDeleteComment(props.comment._id)}>Delete</button>
+        </div>
     }
     const actions = [
         <LikeDislikes userId={sessionStorage.getItem('userId')} commentId={props.comment._id}/>
