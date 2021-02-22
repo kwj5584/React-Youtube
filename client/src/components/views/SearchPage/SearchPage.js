@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react'
-import {Card, Icon, Avatar, Col, Typography, Row} from 'antd';
+import {Card, Icon, Avatar, Col, Typography, Row, Result} from 'antd';
 import axios from 'axios'
 import moment from 'moment';
 const {Title} = Typography
@@ -13,12 +13,16 @@ function SearchPage(props) {
         .then(res=>{
         if(res.data.success){
             setFindVideo(res.data.videoList)
-            }else{
-                alert('검색 오류')
-        }
+            }
     })
-    }, [])
-    
+    }, [FindVideo])
+
+    const notFoundPages = (
+            <div>
+                <img src={'https://i2.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1'} />
+            </div>
+        )
+
     const renderCards = FindVideo.map((video,index)=>{
         var minutes = Math.floor(video.duration / 60);
         var seconds = Math.floor((video.duration- minutes*60));
@@ -47,10 +51,10 @@ function SearchPage(props) {
     })
     return (
         <div style={{width:'85%', margin: '3rem auto'}}>
-            <Title level={2}>Recommended</Title>
+            <Title level={2}></Title>
             <hr/>
             <Row gutter={[32,16]}>
-                {renderCards}
+                { FindVideo.length === 0 ?  notFoundPages : renderCards }
             </Row>
         </div>
     )
