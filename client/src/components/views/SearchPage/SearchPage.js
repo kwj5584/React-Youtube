@@ -19,7 +19,7 @@ function SearchPage(props) {
 
     const notFoundPages = (
             <div>
-                <img src={'https://i2.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1'} />
+                <img style={{width:'100%', height:'100%'}} src={'https://i2.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1'} />
             </div>
         )
 
