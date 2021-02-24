@@ -1,30 +1,35 @@
 import React,{useEffect,useState} from 'react'
-import { SearchOutlined } from '@ant-design/icons'
 import {withRouter} from 'react-router-dom'
+import {Input} from 'antd';
+
+const {Search} = Input;
+
 function CenterMenu(props) {
-    const [Search, setSearch] = useState('')
-    const onChangeSearch = (e) =>{
-        setSearch(e.currentTarget.value)
-    }
-    const onSearch = (e) =>{
-        e.preventDefault();
+    const [InputSearch, InputSetSearch] = useState('')
+
+    const onSearch = (value) =>{
+        InputSetSearch(value);
         props.history.push({
         pathname:'/result',
-        search: `search_query=${Search}`,
-        state: {searchResult:Search}
+        search: `search_query=${value}`,
+        state: {searchResult:value}
         })
+    }
+
+    const onSearchEnter = (e) =>{
+        e.preventDefault();
+        props.history.push({
+            pathname:'/result',
+            search: `search_query=${InputSearch}`,
+            state: {searchResult:InputSearch}
+            })
     }
     
     return (
         <div>
-            <form onSubmit={onSearch} style={{marginTop: '9px', padding:'6px', height:'32px'}}>
-                <input type='text' style={{marginTop:'5px', width:'85%' }} placeholder='search..' onChange={onChangeSearch} />
-                    <button onSubmit={onSearch}  >
-                    {<SearchOutlined  />}
-                    </button>
-                
+            <form onSubmit={onSearchEnter} style={{marginTop: '9px', padding:'6px', height:'32px'}}>
+            <Search placeholder="input search text" size="large" onSearch={onSearch} style={{ width: 400 }} />
             </form>
-            
         </div>
     )
 }
