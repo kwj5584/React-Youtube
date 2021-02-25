@@ -40,7 +40,7 @@ const renderSubscribe = Subscription.map((subscribe,index)=>{
   return (
       <Menu key={index}>
         <Menu.Item>
-        <a style={{}} onClick={(e)=>userPageHandler(subscribe.userTo.name)}><Avatar src={subscribe.userTo.image}/>
+        <a onClick={(e)=>userPageHandler(subscribe.userTo.name)}><Avatar src={subscribe.userTo.image}/>
         {subscribe.userTo.name}</a>
         </Menu.Item>
       </Menu>
@@ -57,11 +57,14 @@ const renderSubscribe = Subscription.map((subscribe,index)=>{
       <a href="/subscription">{<GroupOutlined />} 구독</a>
     </Menu.Item>
     <hr/>
+    {Subscription.length!==0 && 
+    <div>
     <div style={{marginLeft:'13px'}}>구독</div> 
       <br/>
       {renderSubscribe}
-
     <hr/>
+    </div>
+}
   </Menu>
   )
   return (
