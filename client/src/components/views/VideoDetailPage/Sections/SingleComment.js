@@ -55,7 +55,7 @@ function SingleComment(props) {
             }
         })
     }
-    if(props.comment.writer._id){
+    if(props.comment.writer._id && user.userData._id){
         var deleteComment = user.userData._id === props.comment.writer._id && 
         <div>
             <button onClick={(e)=>onDeleteComment(props.comment._id)}>Delete</button>
