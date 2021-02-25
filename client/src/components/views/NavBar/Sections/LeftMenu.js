@@ -52,7 +52,6 @@ const renderSubscribe = Subscription.map((subscribe,index)=>{
     <Menu.Item>
       <a href={`/`}>{<HomeOutlined/>} 홈</a>
     </Menu.Item>
-
     <Menu.Item key="subscription">
       <a href="/subscription">{<GroupOutlined />} 구독</a>
     </Menu.Item>
@@ -67,6 +66,7 @@ const renderSubscribe = Subscription.map((subscribe,index)=>{
 }
   </Menu>
   )
+  
   return (
     <div>
       <MenuOutlined onClick={showDrawer} style={{marginTop:'25px'}}/>
