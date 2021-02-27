@@ -1,8 +1,8 @@
-import React,{useEffect,useState} from 'react'
+import React,{useState} from 'react'
 import {withRouter} from 'react-router-dom'
 import {Input} from 'antd';
 
-const {Search} = Input;
+const { Search } = Input;
 
 function CenterMenu(props) {
     const [InputSearch, InputSetSearch] = useState('')
@@ -28,7 +28,7 @@ function CenterMenu(props) {
     return (
         <div>
             <form onSubmit={onSearchEnter} style={{marginTop: '9px', padding:'6px', height:'32px'}}>
-            <Search placeholder="input search text" size="large" onSearch={onSearch} style={{ width: 400 }} />
+            <Search placeholder="input search text" size="large" onSearch={onSearch} style={{ width:600 }} enterButton/>
             </form>
         </div>
     )
