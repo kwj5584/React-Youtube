@@ -54,7 +54,7 @@ function SearchPage(props) {
             <Title level={2}></Title>
             <hr/>
             <Row gutter={[32,16]}>
-                { FindVideo.length === 0 ?  notFoundPages : renderCards }
+                { FindVideo.length === 0 ? notFoundPages : renderCards }
             </Row>
         </div>
     )

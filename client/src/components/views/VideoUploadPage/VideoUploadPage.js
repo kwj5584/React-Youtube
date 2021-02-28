@@ -51,7 +51,6 @@ function VideoUploadPage(props) {
         axios.post('/api/video/uploadfiles',formData, config)
         .then(res=>{
             if(res.data.success){
-
                 let variable = {
                     filePath : res.data.filePath,
                     fileName : res.data.fileName
@@ -64,7 +63,6 @@ function VideoUploadPage(props) {
                         // 정보를 state에 저장
                         setDuration(res.data.fileDuration)
                         setThumbnailPath(res.data.thumbsFilePath)
-
                     }else{
                         alert('썸네일 생성에 실패했습니다.')
                     }
