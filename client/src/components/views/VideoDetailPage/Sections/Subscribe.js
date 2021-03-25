@@ -1,5 +1,6 @@
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
+import { withRouter } from 'react-router-dom'
 function Subscribe(props) {
     const [SubscribeNumber, setSubscribeNumber] = useState(0)
     const [Subscribed, setSubscribed] = useState(false)
@@ -43,6 +44,11 @@ function Subscribe(props) {
                     }
                 })
         } else{
+            if(props.userFrom === null){
+                alert('로그인 후 구독을 할 수 있습니다.')
+                props.history.push('/login')
+            }
+            else{
             axios.post('/api/subscribe/subscribe',subscribeVariable)
                 .then(res=>{
                     if(res.data.success){
@@ -53,6 +59,7 @@ function Subscribe(props) {
                     }
                 })
             // 구독을 안했다면
+        }
         }
     }
 
@@ -71,4 +78,4 @@ function Subscribe(props) {
     )
 }
 
-export default Subscribe
+export default withRouter(Subscribe);
