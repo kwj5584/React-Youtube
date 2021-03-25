@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from 'react'
 import axios from 'axios'
 import {withRouter} from 'react-router-dom'
-import {Card, Icon, Avatar, Col, Typography, Row} from 'antd';
+import {Card, Avatar, Col, Typography, Row} from 'antd';
 import moment from 'moment';
 const {Title} = Typography
 const {Meta} = Card

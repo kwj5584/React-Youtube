@@ -3,8 +3,6 @@ import { Menu, Drawer, Avatar } from 'antd';
 import {MenuOutlined, HomeOutlined, GroupOutlined} from '@ant-design/icons'
 import axios from 'axios';
 import {withRouter} from 'react-router-dom'
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
 
 function LeftMenu(props) {
   const [Subscription, setSubscription] = useState([])
@@ -23,6 +21,7 @@ function LeftMenu(props) {
       }
     })
   }, [sessionStorage.getItem('userId')])
+
   const showDrawer = () => {
     setVisible(true)
   };
@@ -38,10 +37,10 @@ function LeftMenu(props) {
 
 const renderSubscribe = Subscription.map((subscribe,index)=>{
   return (
-      <Menu key={index}>
-        <Menu.Item>
-        <a onClick={(e)=>userPageHandler(subscribe.userTo.name)}><Avatar src={subscribe.userTo.image}/>
-        {subscribe.userTo.name}</a>
+      <Menu key={index} selectedKeys={[index]} onClick={(_e)=>userPageHandler(subscribe.userTo.name)} >
+        <Menu.Item> 
+          <Avatar src={subscribe.userTo.image}/>
+          {subscribe.userTo.name}
         </Menu.Item>
       </Menu>
   )
@@ -63,21 +62,21 @@ const renderSubscribe = Subscription.map((subscribe,index)=>{
       {renderSubscribe}
     <hr/>
     </div>
-}
+    }
   </Menu>
   )
   
   return (
     <div>
       <MenuOutlined onClick={showDrawer} style={{marginTop:'25px'}}/>
-      <Drawer 
-        placement='left'
-        closable={false}
-        onClose={onClose}
-        visible={visible}
-      >
-        {menu}
-      </Drawer>
+        <Drawer 
+          placement='left'
+          closable={false}
+          onClose={onClose}
+          visible={visible}
+        >
+          {menu}
+        </Drawer>
     </div>
   )
 }
