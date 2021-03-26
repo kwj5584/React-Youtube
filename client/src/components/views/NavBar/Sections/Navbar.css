@@ -48,6 +48,7 @@
 
 .menu__container .menu_rigth {
   float: right;
+  margin-right: 10%;
 }
 
 .menu__container .menu_center{

@@ -6,6 +6,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
+import NavBar from './components/views/NavBar/NavBar'
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from "react-router-dom";
 
@@ -26,7 +27,7 @@ ReactDOM.render(
         )}
     >
         <BrowserRouter>
-            <App />
+            <NavBar />
         </BrowserRouter>
     </Provider>
     , document.getElementById('root'));

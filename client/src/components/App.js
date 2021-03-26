@@ -20,7 +20,7 @@ import UserPage from './views/UserPage/UserPage';
 function App() {
   return (
     <Suspense fallback={(<div>Loading...</div>)}>
-      <NavBar />
+      {/* <NavBar /> */}
       <div style={{ paddingTop: '69px', minHeight: 'calc(100vh - 80px)' }}>
         <Switch>
           {/* <LandingPage/> */}
@@ -34,7 +34,7 @@ function App() {
           <Route exact path="/userPage/:userId" component={Auth(UserPage, null)}/>
         </Switch>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </Suspense>
   );
 }
