@@ -24,7 +24,7 @@ function NavBar() {
   }
   
   return (
-    <Layout>
+    <Layout style={{minHeight:'100vh'}}>
       <Sider style={{backgroundColor:'white'}} trigger={null} 
       collapsible collapsed={collapse}>
         <Button onClick={toggleCollapse} >
@@ -34,8 +34,10 @@ function NavBar() {
           <LeftMenu/>
         </div>
       </Sider>
-      <Header className="menu">
-      <nav className="menu" style={{ position: 'fixed', zIndex: 6, width: '90%' }}>
+
+      <Layout>
+      <Header className="menu" style={{padding:0}}>
+      <nav className="menu" style={{ position: 'fixed', zIndex: 6, width: '100%' }}>
       <div className="menu__container">
         
         <div className="menu__logo">
@@ -50,7 +52,7 @@ function NavBar() {
         <div className="menu_rigth">
           <RightMenu mode="horizontal" />
         </div>
-        <Button
+        {/* <Button
           className="menu__mobile-button"
           type="primary"
           onClick={showDrawer}
@@ -68,13 +70,14 @@ function NavBar() {
           <LeftMenu mode="inline" />
           <CenterMenu mode="inline"/>
           <RightMenu mode="inline" />
-        </Drawer>
+        </Drawer> */}
       </div>
     </nav>
       </Header>
       <Content>
         <App/>
       </Content>
+      </Layout>
     </Layout>
     
   )
