@@ -36,7 +36,7 @@ function NavBar() {
       </Sider>
 
       <Layout>
-      <Header className="menu" style={{padding:0}}>
+      <Header style={{padding:0}}>
       <nav className="menu" style={{ position: 'fixed', zIndex: 6, width: '100%' }}>
       <div className="menu__container">
         
