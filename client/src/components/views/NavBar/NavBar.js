@@ -11,14 +11,14 @@ import { MenuOutlined } from '@ant-design/icons';
 
 const {Header, Sider, Content} = Layout;
 function NavBar() {
-  const [visible, setVisible] = useState(false)
+  // const [visible, setVisible] = useState(false)
   const [collapse, setCollapse] = useState(true);
-  const showDrawer = () => {
-    setVisible(true)
-  };
-  const onClose = () => {
-    setVisible(false)
-  };
+  // const showDrawer = () => {
+  //   setVisible(true)
+  // };
+  // const onClose = () => {
+  //   setVisible(false)
+  // };
   const toggleCollapse = () =>{
     setCollapse(!collapse)
   }
