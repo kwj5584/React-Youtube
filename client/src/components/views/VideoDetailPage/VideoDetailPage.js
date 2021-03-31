@@ -22,7 +22,7 @@ function VideoDetailPage(props) {
         if(VideoDetail.writer){
             setUploader(VideoDetail.writer.name);
         }
-    })
+    },[props.user.userData,VideoDetail.writer])
     
     useEffect(() => {
         axios.post('/api/video/getVideoDetail',variable)        
@@ -42,7 +42,7 @@ function VideoDetailPage(props) {
                 alert('댓글 정보 가져오는 것을 실패')
             }
         })
-    }, [])
+    }, [variable])
     
     const refreshFunction = (newComment) =>{
         setComments(Comments.concat(newComment))

@@ -24,7 +24,7 @@ function Subscribe(props) {
                 alert('정보를 받아오지 못했습니다.')
             }
         })
-    }, [])
+    }, [props.userTo])
 
     const onSubscribe = () =>{
         let subscribeVariable={

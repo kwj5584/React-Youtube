@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react'
-import {Card, Icon, Avatar, Col, Typography, Row, Result} from 'antd';
+import {Card,  Avatar, Col, Typography, Row,} from 'antd';
 import axios from 'axios'
 import moment from 'moment';
 const {Title} = Typography
@@ -15,11 +15,11 @@ function SearchPage(props) {
             setFindVideo(res.data.videoList)
             }
     })
-    }, [FindVideo])
+    }, [FindVideo,props.location.state.searchResult])
 
     const notFoundPages = (
             <div>
-                <img style={{width:'100%', height:'100%'}} src={'https://i2.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1'} />
+                <img style={{width:'100%', height:'100%'}} src={'https://i2.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1'} alt="404page" />
             </div>
         )
 

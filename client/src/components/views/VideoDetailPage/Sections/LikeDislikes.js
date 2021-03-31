@@ -49,7 +49,7 @@ function LikeDislikes(props) {
             }
         })
         
-    }, [])
+    }, [props.userId,variable])
 
     const onLike = () =>{
         if(LikeAction === null) {  // 좋아요버튼 클릭이 안되있을 때

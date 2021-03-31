@@ -44,7 +44,7 @@ function LandingPage(props) {
                         title={video.title}
                     />
                     <Tooltip placement='topLeft' title={video.writer.name}>
-                    <a style={{color:'black'}}onClick={(e)=>userPageHandler(video.writer.name)}>{video.writer.name}</a><br/>
+                    <p style={{color:'black'}}onClick={(e)=>userPageHandler(video.writer.name)}>{video.writer.name}</p><br/>
                     </Tooltip>
                     <span style={{marginLeft:'3rem'}}>조회수 {video.views} 회</span>
                      - <span>{moment(video.createdAt).format('MMM Do YY')}</span> {/**업데이트 한 날짜 */}

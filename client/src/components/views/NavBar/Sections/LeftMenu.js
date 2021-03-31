@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react';
-import { Menu, Drawer, Avatar , Button} from 'antd';
+import { Menu,  Avatar , } from 'antd';
 import {HomeOutlined, GroupOutlined} from '@ant-design/icons'
 import axios from 'axios';
 import {withRouter} from 'react-router-dom'
@@ -19,7 +19,7 @@ function LeftMenu(props) {
         alert('구독 정보 가져오기 실패')
       }
     })
-  }, [sessionStorage.getItem('userId')])
+  }, [])
 
   const userPageHandler = (subscribe) =>{
     props.history.push({
