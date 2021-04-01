@@ -42,7 +42,7 @@ function VideoDetailPage(props) {
                 alert('댓글 정보 가져오는 것을 실패')
             }
         })
-    }, [variable])
+    }, [])
     
     const refreshFunction = (newComment) =>{
         setComments(Comments.concat(newComment))
