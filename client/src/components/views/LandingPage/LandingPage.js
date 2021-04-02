@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react'
-import {Card, Avatar, Col, Typography, Row, Tooltip} from 'antd';
+import {Card, Avatar, Col,  Row, Tooltip} from 'antd';
 import axios from 'axios'
 import moment from 'moment';
 // const {Title} = Typography

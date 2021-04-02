@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import LeftMenu from './Sections/LeftMenu';
 import RightMenu from './Sections/RightMenu';
-import {  Button,  Layout } from 'antd';
+import { Layout } from 'antd';
 import CenterMenu from './Sections/CenterMenu'
 import './Sections/Navbar.css';
 import App from '../../App'
