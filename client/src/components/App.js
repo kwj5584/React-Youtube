@@ -19,10 +19,8 @@ import UserPage from './views/UserPage/UserPage';
 function App() {
   return (
     <Suspense fallback={(<div>Loading...</div>)}>
-      
       <div style={{ paddingTop: '69px', minHeight: 'calc(100vh - 80px)' }}>
         <Switch>
-          {/* <LandingPage/> */}
           <Route exact path="/" component={Auth(LandingPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
@@ -34,6 +32,7 @@ function App() {
         </Switch>
       </div>
       {/* <Footer /> */}
+      
     </Suspense>
   );
 }

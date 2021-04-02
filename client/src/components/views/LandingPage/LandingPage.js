@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react'
 import {Card, Avatar, Col, Typography, Row, Tooltip} from 'antd';
 import axios from 'axios'
 import moment from 'moment';
-const {Title} = Typography
+// const {Title} = Typography
 const {Meta} = Card
 
 function LandingPage(props) {
@@ -55,8 +55,8 @@ function LandingPage(props) {
     })
     return (
         <div style={{width:'85%', margin: '3rem auto'}}>
-            <Title level={2}>Recommended</Title>
-            <hr/>
+            {/* <Title level={2}>Recommended</Title>
+            <hr/> */}
             <Row gutter={[32,16]}>
                 {renderCards}
             </Row>
