@@ -28,7 +28,7 @@ function CenterMenu(props) {
     return (
         <div>
             <form onSubmit={onSearchEnter} style={{marginTop: '9px', padding:'6px', height:'32px'}}>
-            <Search placeholder="input search text" size="large" onSearch={onSearch} style={{ width:400 }} enterButton/>
+            <Search placeholder="검색" size="large" onSearch={onSearch} style={{ width:400 }} enterButton/>
             </form>
         </div>
     )
