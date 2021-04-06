@@ -19,7 +19,7 @@ function LeftMenu(props) {
         alert('구독 정보 가져오기 실패')
       }
     })
-  }, [])
+  }, [Subscription])
 
   const userPageHandler = (subscribe) =>{
     props.history.push({
