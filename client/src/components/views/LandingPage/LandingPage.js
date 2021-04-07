@@ -28,6 +28,7 @@ function LandingPage(props) {
         var seconds = Math.floor((video.duration- minutes*60));
         return(
             <Col key={index} lg={6} md={8} xs={24}> {/** 가장 큰 화면일 때 6*4=24 4개의 영상을 한 행에 등록, 중간크기일 때 3개, 가장 작은 크기일 때 1개 */}
+            <title>React-Youtube</title>
                 <div style={{position:'relative'}}>
                     <a href={`/video/${video._id}`}> 
                         <img style={{width:'100%'}} src={`http://localhost:5000/${video.thumbnail}`} alt='thumbnail'/>

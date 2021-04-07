@@ -43,7 +43,6 @@ function VideoDetailPage(props) {
             }
         })
     }, [])
-    
     const refreshFunction = (newComment) =>{
         setComments(Comments.concat(newComment))
     }
@@ -69,7 +68,9 @@ function VideoDetailPage(props) {
 
         const subscribeButton = VideoDetail.writer._id !== sessionStorage.getItem('userId') &&  <Subscribe userTo={VideoDetail.writer._id} userFrom={sessionStorage.getItem('userId')}/>
         return (
+            
             <Row gutter={[16,16]}>
+                <title>{VideoDetail ? VideoDetail.title : 'React-Youtube'}</title>
                 <Col lg={18} xs={24}>
                     <div style={{ width: '100%', padding: '3rem 4em' }}>
                         { videoType.slice(-3) === 'mp4'?
