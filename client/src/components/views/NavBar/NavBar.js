@@ -11,14 +11,7 @@ import { MenuOutlined } from '@ant-design/icons';
 const { Header,  Sider, Content } = Layout;
 
 function NavBar() {
-  // const [visible, setVisible] = useState(false)
   const [collapse, setCollapse] = useState(true);
-  // const showDrawer = () => {
-  //   setVisible(true)
-  // };
-  // const onClose = () => {
-  //   setVisible(false)
-  // };
   const toggleCollapse = () =>{
     setCollapse(!collapse)
   }
@@ -28,7 +21,7 @@ function NavBar() {
     <Header style={{padding:0}}>
     <nav className="menu" style={{ position: 'fixed', zIndex: 6, width: '100%'}}>
       <div className="menu__outlined">
-        <p onClick={toggleCollapse} >
+        <p onClick={toggleCollapse} style={{marginRight:'10px'}}>
           {collapse? <MenuOutlined/> : <MenuOutlined/>}
         </p>
       </div>
@@ -45,25 +38,6 @@ function NavBar() {
       <div className="menu_rigth">
         <RightMenu mode="horizontal" />
       </div>
-      {/* <Button
-        className="menu__mobile-button"
-        type="primary"
-        onClick={showDrawer}
-      >
-        <Icon type="align-right" />
-      </Button>
-      <Drawer
-        title="Basic Drawer"
-        placement="right"
-        className="menu_drawer"
-        closable={false}
-        onClose={onClose}
-        visible={visible}
-      >
-        <LeftMenu mode="inline" />
-        <CenterMenu mode="inline"/>
-        <RightMenu mode="inline" />
-      </Drawer> */}
     </div>
   </nav>
     </Header>
