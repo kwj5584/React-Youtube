@@ -69,15 +69,7 @@ const renderSubscribe = Subscription.map((subscribe, index)=>{
   
   return (
     <div>
-      {/* <MenuOutlined onClick={showDrawer} style={{marginTop:'25px'}}/> */}
-        {/* <Drawer 
-          placement='left'
-          closable={false}
-          onClose={onClose}
-          visible={visible}
-        > */}
-          {menu}
-        {/* </Drawer> */}
+      {menu}
     </div>
   )
 }
