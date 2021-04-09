@@ -98,6 +98,7 @@ function RegisterPage(props) {
         } = props;
         return (
           <div className="app">
+            <title>React-Youtube</title>
             <h2>Sign up</h2>
             <Form style={{ minWidth: '375px' }} {...formItemLayout} onSubmit={handleSubmit} >
 

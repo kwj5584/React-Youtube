@@ -51,6 +51,7 @@ function SearchPage(props) {
     })
     return (
         <div style={{width:'85%', margin: '3rem auto'}}>
+            <title>React-Youtube</title>
             <Title level={2}></Title>
             <hr/>
             <Row gutter={[32,16]}>

@@ -57,6 +57,7 @@ function UserPage(props) {
     
     return (
         <div style={{width:'85%', margin: '3rem auto'}}>
+            <title>{userInfo}</title>
             <Title level={2}>
                 {renderingUser}
             </Title>
