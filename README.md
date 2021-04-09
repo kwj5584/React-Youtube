@@ -1,7 +1,11 @@
 <h2>react, nodejs, mongoDB를 이용한 youtube clonecoding</h2>
 <hr/>
 
-#### 메인화면
+#### 메인화면(비로그인)
+![React-Youtube-MainPage(Login)](./readme_upload/React-Youtube-MainPage(NotLogin).png)
+<hr/>
+
+#### 메인화면(로그인)
 ![react-youtube-mainPage](https://user-images.githubusercontent.com/74160659/109466511-285c4a80-7aad-11eb-8b48-103ed63b7a82.PNG)
 <hr/>
 
