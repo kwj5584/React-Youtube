@@ -1,29 +1,35 @@
 <h2>react, nodejs, mongoDB를 이용한 youtube clonecoding</h2>
 <hr/>
 
-#### 메인화면(비로그인)
-![React-Youtube-MainPage(Login)](./readme_upload/React-Youtube-MainPage(NotLogin).png)
+#### 메인페이지(비로그인)
+![React-Youtube-MainPage(NotLogin)](https://user-images.githubusercontent.com/74160659/114137130-b4804e00-9946-11eb-81ab-0556e70fe97a.PNG)
 <hr/>
 
-#### 메인화면(로그인)
-![react-youtube-mainPage](https://user-images.githubusercontent.com/74160659/109466511-285c4a80-7aad-11eb-8b48-103ed63b7a82.PNG)
+#### 메인페이지(로그인)
+![React-Youtube-MainPage(Login)](https://user-images.githubusercontent.com/74160659/114137166-bf3ae300-9946-11eb-8d56-9b7fafe9e7c9.PNG)
 <hr/>
 
-#### 세부화면
-![react-youtube-detailPage](https://user-images.githubusercontent.com/74160659/109466519-2c886800-7aad-11eb-8ab6-7cdc4b33a42b.PNG)
+#### 세부페이지
+![React-Youtube-VideoDetailPage](https://user-images.githubusercontent.com/74160659/114137200-c9f57800-9946-11eb-903b-32720afc2152.PNG)
 좋아요/싫어요 및 댓글 대댓글, 구독여부, 사이드비디오 구현
 <hr/>
 
-#### 좌측상단 메뉴
-![react-youtube-capture-leftMenu](https://user-images.githubusercontent.com/74160659/109466549-3e6a0b00-7aad-11eb-9ae7-e6f36ee27cde.PNG)
-구독한 페이지 리스트 및 홈 라우팅
+#### 검색페이지
+![React-Youtube-SearchPage](https://user-images.githubusercontent.com/74160659/114137224-d5e13a00-9946-11eb-843d-8d84991ad263.PNG)
+검색내용으로 업로더/비디오제목을 통하여 검색하여 리스트 보여줌
 <hr/>
 
-#### 우측상단 메뉴(로그인안되어있을 시)
-![react-youtube-capture-rightMenu(NotLogin)](https://user-images.githubusercontent.com/74160659/109466409-0367d780-7aad-11eb-8201-2adba9fb0ec4.PNG)
-회원가입 및 로그인 라우팅
+#### 구독페이지
+![React-Youtube-SubscriptionPage](https://user-images.githubusercontent.com/74160659/114137302-f14c4500-9946-11eb-80a4-cb0c91836e06.PNG)
+구독하고있는 페이지의 영상 전부를 리스트로 보여줌
 <hr/>
 
-#### 우측상단 메뉴(로그인되어있을 시)
-![react-youtube-capture-rightMenu(Login)](https://user-images.githubusercontent.com/74160659/109466545-3a3ded80-7aad-11eb-80c9-b87573d061d9.PNG)
-영상 업로드 및 로그아웃 라우팅
+#### 유저페이지
+![React-Youtube-UserPage](https://user-images.githubusercontent.com/74160659/114137389-1476f480-9947-11eb-91ca-add03bc875ef.PNG)
+좌측상단 네비게이션 바의 구독하고있는 페이지 클릭 시 해당 유저의 업로드된 영상들을 보여줌
+<hr/>
+
+#### 업로드페이지
+![React-Youtube-UploadPage](https://user-images.githubusercontent.com/74160659/114137466-3bcdc180-9947-11eb-9d79-123167054a59.PNG)
+gif/mp4 형식의 파일을 올릴 수 있게 구현
+<hr/>
