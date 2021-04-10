@@ -28,15 +28,15 @@ function LeftMenu(props) {
     })
   }
 
-const renderSubscribe = Subscription.map((subscribe, index)=>{
+const renderSubscribe = Subscription.map((subscribe)=>{
   return (
       <Menu 
       mode='inline' 
       key={subscribe._id} 
-      onClick={(_e)=>userPageHandler(subscribe.userTo.name)} 
-      triggerSubMenuAction='click'
+      onClick={()=>userPageHandler(subscribe.userTo.name)} 
+      selectedKeys={subscribe._id}
       >
-        <Menu.Item key={index} >
+        <Menu.Item>
           <Avatar src={subscribe.userTo.image}/> &nbsp;&nbsp;&nbsp;
           {subscribe.userTo.name}
         </Menu.Item>
@@ -57,7 +57,7 @@ const renderSubscribe = Subscription.map((subscribe, index)=>{
       <hr/>
       {Subscription.length!==0 && 
       <div>
-      <div style={{marginLeft:'13px'}}>구독</div> 
+      <div style={{marginLeft:'13px', marginBottom:'10px',marginTop:'20px'}}>구독</div> 
         <br/>
         {renderSubscribe}
       <hr/>
