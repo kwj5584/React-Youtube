@@ -18,7 +18,7 @@ function LoginPage(props) {
     setRememberMe(!rememberMe)
   };
 
-  const initialEmail = localStorage.getItem("rememberMe") ? localStorage.getItem("rememberMe") : '';
+  const initialEmail = sessionStorage.getItem("rememberMe") ? sessionStorage.getItem("rememberMe") : '';
   return (
     <Formik
       initialValues={{
